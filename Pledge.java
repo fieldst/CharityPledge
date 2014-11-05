@@ -396,6 +396,18 @@ public class Pledge extends javax.swing.JFrame {
         JsonImport();
     }
     
+    public void DeleteButtonActionPerformed(java.awt.event.ActionEvent evt) 
+    {
+        int[] rowDelete; 
+        rowDelete = PledgeViewTable.getSelectedRows();
+        DefaultTableModel model = (DefaultTableModel) PledgeViewTable.getModel();
+ 
+        for (int rows : rowDelete)
+        { 
+            model.removeRow(PledgeViewTable.convertColumnIndexToModel(rows));
+        }
+    }
+    
     // Variables declaration - do not modify                     
     private javax.swing.JLabel Amount;
     private javax.swing.JTextField AmountTextField;
