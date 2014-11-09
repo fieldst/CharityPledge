@@ -274,6 +274,27 @@ public class Pledge extends javax.swing.JFrame {
             String[] JSONrow = {"name", name, "charity", charity, "contribution", contribution};
             JsonWrite(JSONrow);
             // WriteDB(name, charity, contribution);
+            //Tyrone's code
+                   try{
+                String number1=NameTextField.getText();
+                String number2=AmountTextField.getText();
+                String number3=(String) CharityComboBox.getSelectedItem();
+                //Class.forName("org.apache.derby.jdbc.ClientDriver");
+                String url="jdbc:derby://localhost:1527/teamd_database [teamd on TEAMD]";
+                Connection conn = DriverManager.getConnection(url);
+                PreparedStatement pst =conn.prepareStatement("insert into charitydata(name,charity,contribution) values(?,?,?");
+                //String sql = "update charitydata set name='"+number1+"'charity='"+number2+"'contribution='"+number3+"' where name='"+number1+"'";
+                //Connection con = DriverManager.getConnection(sql);
+                pst.setString(1,number1);
+                pst.setString(2,number2);
+                pst.setString(3,number3);
+                int a = pst.executeUpdate();
+                pst =conn.prepareStatement(url); 
+                pst.executeUpdate();
+    }                                            
+            catch (Exception e){
+                JOptionPane.showMessageDialog(null, e);
+            }
         }
     }                                            
 
